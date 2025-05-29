@@ -1,8 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import './logo.css'
 
 const inter = Inter({ subsets: ['latin'] })
+
+// Separate viewport configuration
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#392780',
+}
 
 export const metadata: Metadata = {
   title: 'XYRAS - Ditch the résumé',
@@ -11,8 +19,7 @@ export const metadata: Metadata = {
   keywords:
     'professional network, career, resume alternative, professional score, credibility',
   authors: [{ name: 'XYRAS Team' }],
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#392780',
+  metadataBase: new URL('https://xyras.com'),
   openGraph: {
     title: 'XYRAS - Ditch the résumé',
     description: 'Build professional credibility that breathes with YOU.',
