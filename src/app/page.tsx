@@ -69,10 +69,9 @@ const AstronautLogo = () => (
       width="600"
       height="600"
     />
-    <div className="helmet-accents"></div>
+    {/* Removed helmet-accents for no color hue animation */}
     <div className="helmet-text-overlay">
       <div className="launching-text">Launching soon<span className="dot-animation">...</span></div>
-      <div className="status-text">Systems: <span className="status-highlight">Ready</span></div>
     </div>
   </div>
 );
@@ -182,18 +181,14 @@ export default function HomePage() {
         <div className="hero-content">
           {/* Left side - text content */}
           <div className="hero-text scroll-animate" ref={heroTextRef}>
-            <h1 className="hero-title animate-item">
-              Professional Identity, Reimagined.
-            </h1>
+            <h1 className="hero-title animate-item">Professional Identity, Reimagined.</h1>
             <p className="hero-subtitle animate-item">
               Build professional credibility that <br />
               <strong>breathes with <span className="hero-emphasis">YOU.</span></strong>
             </p>
-            <div className="hero-cta animate-item">
+            <div className="hero-cta animate-item flex justify-center">
               <Link href="/signup">
-                <button className="helmet-cta-btn">
-                  Get Early Access
-                </button>
+                <button className="helmet-cta-btn">Get Early Access</button>
               </Link>
             </div>
           </div>
@@ -215,7 +210,7 @@ export default function HomePage() {
         <div className="mission-container">
           <div className="mission-content">
             <h2 className="mission-title scroll-animate" ref={missionRef}>
-              We believe your career should be measured by your contributions — not by your connections.
+              Empowering professionals to showcase real impact and growth in the digital age.
             </h2>
             
             <div className="mission-grid">

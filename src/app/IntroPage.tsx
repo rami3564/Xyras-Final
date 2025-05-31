@@ -222,12 +222,7 @@ const IntroPage = ({ onComplete }: IntroPageProps) => {
           </div>
         </div>
 
-        {/* Improved scroll hint positioning */}
-        {canLaunch && !isLaunching && (
-          <div className={styles.scrollHint}>
-            <p>Press SPACE to launch</p>
-          </div>
-        )}
+        {/* Removed space to launch text */}
       </div>
     </div>
   );
