@@ -3,7 +3,10 @@ import astronautLogo from './assets/AstronautLogo.svg';
 
 import { useState, useEffect, useRef } from "react";
 import Link from 'next/link';
-import IntroPage from './IntroPage';
+import dynamic from 'next/dynamic';
+
+// Dynamically import IntroPage with no SSR
+const IntroPage = dynamic(() => import('./IntroPage'), { ssr: false });
 
 // Get Early Access button component (inside the astronaut helmet)
 const HelmetButton = () => {
@@ -81,10 +84,30 @@ export default function HomePage() {
   const [rocketLanded, setRocketLanded] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   
   // Refs for animated elements
   const missionRef = useRef<HTMLHeadingElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
+
+  // Check localStorage after mount
+  useEffect(() => {
+    setIsMounted(true);
+    const introData = localStorage.getItem('introData');
+    if (introData) {
+      try {
+        const { timestamp } = JSON.parse(introData);
+        const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+        if (Date.now() - timestamp <= thirtyDaysInMs) {
+          setShowIntro(false);
+          setPageLoaded(true);
+          setRocketLanded(true);
+        }
+      } catch (e) {
+        console.error('Error parsing introData:', e);
+      }
+    }
+  }, []);
   
   // Set up intersection observer for scroll animations
   useEffect(() => {
@@ -131,6 +154,13 @@ export default function HomePage() {
       setShowIntro(false);
       setPageLoaded(true);
       
+      // Save to localStorage with timestamp
+      const introData = {
+        timestamp: Date.now(),
+        completed: true
+      };
+      localStorage.setItem('introData', JSON.stringify(introData));
+      
       // Small delay for rocket landing animation
       setTimeout(() => {
         setRocketLanded(true);
@@ -138,6 +168,11 @@ export default function HomePage() {
       }, 400);
     }, 50);
   };
+
+  // Don't render anything until after client-side hydration
+  if (!isMounted) {
+    return null;
+  }
 
   // Show intro page first
   if (showIntro) {

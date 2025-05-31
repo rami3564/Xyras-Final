@@ -38,12 +38,12 @@ const IntroPage = ({ onComplete }: IntroPageProps) => {
       }
     }, 250); // Slightly faster animation between letters (250ms)
     
-    // Auto-launch timeout if user doesn't interact
+    // Auto-launch timeout if user doesn't interact after 5 seconds
     const autoLaunchTimer = setTimeout(() => {
       if (!isLaunching) {
         startMorphTransition();
       }
-    }, 8000); // 8 seconds timeout
+    }, 5000); // 5 seconds timeout
 
     return () => {
       clearInterval(letterTimer);
