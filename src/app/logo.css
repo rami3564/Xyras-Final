@@ -1,4 +1,4 @@
-/* XYRAS logo styling */
+/* XYRAS logo styling - minimal, no rocket/star/space */
 .logo-container {
   display: flex;
   align-items: center;
@@ -9,18 +9,18 @@
   font-family: 'Inter', sans-serif;
   font-weight: 900;
   font-size: 1.6rem;
-  color: white;
+  color: #23272f;
   margin: 0 0.02em;
   display: inline-flex;
   align-items: center;
-  text-shadow: 0 0 15px rgba(4, 245, 243, 0.3);
+  text-shadow: none;
   opacity: 0;
   animation: fadeInLogo 0.6s ease-out forwards;
-  transition: text-shadow 0.3s ease;
+  transition: none;
 }
 
 .logo-letter:hover {
-  text-shadow: 0 0 20px rgba(4, 245, 243, 0.6);
+  text-shadow: none;
 }
 
 @keyframes fadeInLogo {
@@ -34,84 +34,10 @@
   }
 }
 
-.rocket-letter {
-  margin: 0 0.02em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.rocket-letter img {
-  height: 1.3em; /* Scale with the font size */
-  width: auto;
-  vertical-align: middle;
-  margin-bottom: 0.1em; /* Small adjustment to align with text */
-}
-
-.rocket-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rocket-flame-nav {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1px;
-  justify-content: center;
-}
-
-.flame-nav {
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  filter: blur(1px);
-  animation: flickerNav 0.15s infinite alternate;
-}
-
-.flame-nav1 {
-  width: 3px;
-  height: 8px;
-  background: linear-gradient(to top, #ff4500, #ff6500, #ffaa00);
-  opacity: 0.9;
-}
-
-.flame-nav2 {
-  width: 4px;
-  height: 10px;
-  background: linear-gradient(to top, #ff2500, #ff4500, #ff8500);
-  opacity: 1;
-}
-
-@keyframes flickerNav {
-  0% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
-  100% { transform: scaleY(1.1) scaleX(0.9); opacity: 1; }
-}
-
-.rocket-landing {
-  animation: rocketLand 1s ease-out forwards;
-}
-
-@keyframes rocketLand {
-  0% {
-    transform: translateY(-50px) scale(0.3);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(5px) scale(1.1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
 @media (max-width: 768px) {
   .logo-letter {
     font-size: 1.2rem;
   }
 }
+
+/* Remove rocket-letter, rocket-wrapper, rocket-flame-nav, flame-nav, rocket-landing, and all related styles */

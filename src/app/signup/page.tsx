@@ -60,10 +60,22 @@ export default function SignupPage() {
       <div className="min-h-screen flex items-center justify-center bg-signup">
         <div className="success-card">
           <div className="success-icon">✨</div>
-          <h2 className="text-2xl font-bold mb-4 text-white">Welcome Aboard!</h2>
-          <p className="text-gray-200 mb-8">Thanks for joining the waitlist. We'll notify you as soon as we're ready to launch.</p>
+          <h2 className="text-2xl font-bold mb-4" style={{ color: '#23272f' }}>Welcome Aboard!</h2>
+          <p className="mb-8" style={{ color: '#444950' }}>Thanks for joining the waitlist. We'll notify you as soon as we're ready to launch.</p>
           <Link href="/">
-            <button className="submit-btn">Return Home</button>
+            <button className="submit-btn" style={{ 
+              background: '#fff',
+              color: '#23272f',
+              border: '2px solid #23272f',
+              padding: '0.9rem 2.2rem',
+              borderRadius: '0.5rem',
+              fontWeight: 600,
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+              width: 'auto',
+              display: 'inline-block'
+            }}>
+              Return Home
+            </button>
           </Link>
         </div>
       </div>
@@ -78,8 +90,8 @@ export default function SignupPage() {
       
       <div className="signup-card">
         <div className="card-content max-w-md w-full">
-          <h1 className="text-3xl font-bold mb-2">Join the Beta</h1>
-          <p className="text-gray-400 mb-8">Be among the first to experience the future of professional credibility.</p>
+          <h1 className="text-3xl font-bold mb-2" style={{ color: '#23272f' }}>Join the Beta</h1>
+          <p className="mb-8" style={{ color: '#444950' }}>Be among the first to experience the future of professional credibility.</p>
           
           <form onSubmit={handleSubmit}>
             <div>
@@ -132,13 +144,30 @@ export default function SignupPage() {
                 type="submit" 
                 className={`submit-btn ${isSubmitting ? 'submitting' : ''}`}
                 disabled={isSubmitting}
+                style={{ 
+                  background: '#fff',
+                  color: '#23272f',
+                  border: '2px solid #23272f',
+                  padding: '0.9rem 2.2rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: 600,
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
+                }}
               >
                 {isSubmitting ? 'Submitting...' : 'Get Early Access'}
               </button>
             </div>
 
             {formState.error && (
-              <div className="text-red-500 text-sm mt-2">
+              <div style={{ 
+                color: '#e53e3e', 
+                fontSize: '0.875rem', 
+                marginTop: '0.75rem',
+                padding: '0.5rem',
+                backgroundColor: 'rgba(229, 62, 62, 0.1)',
+                borderRadius: '0.375rem',
+                textAlign: 'center'
+              }}>
                 {formState.error}
               </div>
             )}

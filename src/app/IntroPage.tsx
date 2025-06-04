@@ -15,8 +15,8 @@ const IntroPage = ({ onComplete }: IntroPageProps) => {
   const [morphProgress, setMorphProgress] = useState(0);
   const [visibleLetters, setVisibleLetters] = useState(0);
 
-  // Define the letters to animate 
-  const logoLetters = ['X', 'Y', 'R', 'rocket', 'S'];
+  // Replace rocket with 'A' in logo
+  const logoLetters = ['X', 'Y', 'R', 'A', 'S'];
 
   useEffect(() => {
     // Initial fade in
@@ -134,95 +134,60 @@ const IntroPage = ({ onComplete }: IntroPageProps) => {
     }
   };
 
-  // Enhanced rocket movement with smoother and more dramatic animation
-  const rocketTransform = isLaunching 
-    ? `translateY(${-morphProgress * 300}px) translateX(${morphProgress * 80}px) scale(${1 - morphProgress * 0.3}) rotate(${morphProgress * 15}deg)`
-    : 'translateY(0px) scale(1)';
-
   return (
     <div 
       className={`${styles.introContainer} ${fadeIn ? styles.fadeIn : ''}`}
-      style={getBackgroundStyle()}
+      style={{ textAlign: 'center' }}
     >
-      {/* Enhanced Star Field */}
-      <div className={styles.starField}>
-        {/* Intro Stars - fade out */}
-        <div className={styles.introStars} style={{ opacity: introOpacity }}>
-          <div className={styles.starsLayer1}></div>
-          <div className={styles.starsLayer2}></div>
-          <div className={styles.twinklingLayer}></div>
-        </div>
-        
-        {/* Landing Stars - fade in to match main page */}
-        <div className={styles.landingStars} style={{ opacity: landingOpacity }}>
-          <div className={styles.mainStarsSmall}></div>
-          <div className={styles.mainStarsMedium}></div>
-          <div className={styles.mainDeepStars}></div>
-          <div className={styles.mainTwinklingStars}></div>
-        </div>
-        
-        {/* Shooting stars throughout */}
-        <div className={styles.shootingStars}>
-          {[...Array(6)].map((_, i) => (
-            <div 
-              key={i}
-              className={styles.shootingStar} 
+      <div className={styles.introContent}>
+        <div className={styles.logoText}>
+          {logoLetters.slice(0, visibleLetters).map((letter, index) => (
+            <span 
+              key={index} 
+              className={styles.letter}
               style={{ 
-                '--delay': `${i * 2}s`,
-                '--rotation': `${15 + i * 10 - (i % 2) * 30}deg`,
-                '--duration': `${6 + i}s`
-              } as React.CSSProperties}
-            />
+                animationDelay: `${index * 0.25}s`,
+                color: '#23272f',
+                textShadow: '0 2px 16px rgba(60,60,60,0.04)'
+              }}
+            >
+              {letter}
+            </span>
           ))}
         </div>
-      </div>
-
-      {/* Intro Content */}
-      <div className={styles.introContent} style={{ opacity: introOpacity }}>
-        <div className={`${styles.introText} ${fadeIn ? styles.textVisible : ''}`}>
-          {/* Animated XYRAS logo with individual letters */}
-          <div className={styles.logoText}>
-            {logoLetters.map((letter, index) => (
-              <span 
-                key={index} 
-                className={styles.letter} 
-                style={{ 
-                  animationDelay: `${index * 0.3}s`,
-                  opacity: visibleLetters > index ? 1 : 0,
-                  transform: visibleLetters > index ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)'
-                }}
-              >
-                {letter === 'rocket' ? (
-                  <div 
-                    className={`${styles.introRocket} ${isLaunching ? styles.launching : ''}`}
-                    style={{ transform: letter === 'rocket' && isLaunching ? rocketTransform : undefined }}
-                  >
-                    <img 
-                      src="/assets/xyras-rocket.png"
-                      alt="Rocket"
-                      width="80"
-                      height="80"
-                      className={styles.rocketImage}
-                    />
-                    
-                    {/* Enhanced rocket flames during liftoff - positioned based on the rocket image */}
-                    {isLaunching && (
-                      <div className={`${styles.rocketFlames} ${styles.active}`}>
-                        <div className={`${styles.flame} ${styles.flame1}`}></div>
-                        <div className={`${styles.flame} ${styles.flame2}`}></div>
-                        <div className={`${styles.flame} ${styles.flame3}`}></div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  letter
-                )}
-              </span>
-            ))}
+        
+        {canLaunch && (
+          <div 
+            className={styles.continueContainer}
+            style={{ 
+              opacity: isLaunching ? 0 : 1, 
+              transition: 'opacity 0.5s ease',
+              marginTop: '3rem'
+            }}
+          >
+            <button 
+              className={styles.continueButton}
+              onClick={startMorphTransition}
+              style={{
+                background: '#fff',
+                color: '#23272f',
+                padding: '0.9rem 2.2rem',
+                borderRadius: '0.5rem',
+                border: '2px solid #23272f',
+                fontWeight: 600,
+                fontSize: '1rem',
+                letterSpacing: '0.5px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+            >
+              Continue
+            </button>
           </div>
-        </div>
-
-        {/* Removed space to launch text */}
+        )}
       </div>
     </div>
   );

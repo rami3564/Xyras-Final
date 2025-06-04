@@ -1,87 +1,33 @@
-import astronautLogo from './assets/AstronautLogo.svg';
 'use client'
 
 import { useState, useEffect, useRef } from "react";
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 
-// Dynamically import IntroPage with no SSR
-const IntroPage = dynamic(() => import('./IntroPage'), { ssr: false });
-
-// Get Early Access button component (inside the astronaut helmet)
-const HelmetButton = () => {
-  return (
-    <div className="text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-      <Link href="/signup">
-        <button className="helmet-cta-btn">
-          Get Early Access
-        </button>
-      </Link>
-    </div>
-  );
-};
-
-// Animated XYRAS logo with rocket for the navigation
-const AnimatedLogo = ({ rocketLanded = false }: { rocketLanded?: boolean }) => {
-  const letters = ['X', 'Y', 'R', 'rocket', 'S'];
-  
+// Minimal Animated Logo (no rocket, just 'A')
+const AnimatedLogo = () => {
+  const letters = ['X', 'Y', 'R', 'A', 'S'];
   return (
     <div className="logo-container flex items-center">
       {letters.map((letter, index) => (
         <span 
           key={index} 
-          className={`logo-letter ${letter === 'rocket' ? 'rocket-letter' : ''}`}
+          className="logo-letter"
           style={{ 
             animationDelay: `${index * 0.2 + 0.5}s`,
-            animationDuration: '0.5s'
+            animationDuration: '0.5s',
+            color: '#111',
+            fontWeight: 900
           }}
         >
-          {letter === 'rocket' ? (
-            <div className="rocket-wrapper">
-              <img 
-                src="/assets/xyras-rocket.png"
-                alt="Rocket"
-                width="32" 
-                height="32" 
-                className={`inline-block ${rocketLanded ? 'rocket-landing' : ''}`}
-              />
-              {rocketLanded && (
-                <div className="rocket-flame-nav">
-                  <div className="flame-nav flame-nav1"></div>
-                  <div className="flame-nav flame-nav2"></div>
-                </div>
-              )}
-            </div>
-          ) : (
-            letter
-          )}
+          {letter}
         </span>
       ))}
     </div>
   );
 };
 
-// Enhanced Astronaut component using imported SVG
-const AstronautLogo = () => (
-  <div className="astronaut-wrapper">
-    <div className="helmet-glow"></div>
-    <img 
-      src="/assets/AstronautLogo.svg"
-      alt="Astronaut Helmet"
-      className="astronaut-image animate-float"
-      width="600"
-      height="600"
-    />
-    {/* Removed helmet-accents for no color hue animation */}
-    <div className="helmet-text-overlay">
-      <div className="launching-text">Launching soon<span className="dot-animation">...</span></div>
-    </div>
-  </div>
-);
-
 export default function HomePage() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [rocketLanded, setRocketLanded] = useState(false);
+  const [pageTransitioned, setPageTransitioned] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -99,9 +45,8 @@ export default function HomePage() {
         const { timestamp } = JSON.parse(introData);
         const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
         if (Date.now() - timestamp <= thirtyDaysInMs) {
-          setShowIntro(false);
           setPageLoaded(true);
-          setRocketLanded(true);
+          setPageTransitioned(true);
         }
       } catch (e) {
         console.error('Error parsing introData:', e);
@@ -146,127 +91,181 @@ export default function HomePage() {
     };
   }, [pageLoaded]);
   
-  const handleIntroComplete = () => {
-    setIsTransitioning(true);
-    
-    // Quick transition for smooth UX
-    setTimeout(() => {
-      setShowIntro(false);
-      setPageLoaded(true);
-      
-      // Save to localStorage with timestamp
-      const introData = {
-        timestamp: Date.now(),
-        completed: true
-      };
-      localStorage.setItem('introData', JSON.stringify(introData));
-      
-      // Small delay for rocket landing animation
-      setTimeout(() => {
-        setRocketLanded(true);
-        setIsTransitioning(false);
-      }, 400);
-    }, 50);
-  };
-
   // Don't render anything until after client-side hydration
   if (!isMounted) {
     return null;
   }
 
-  // Show intro page first
-  if (showIntro) {
-    return <IntroPage onComplete={handleIntroComplete} />;
-  }
-
   return (
-    <div className={`font-sans main-page ${pageLoaded ? 'page-loaded' : ''} ${isTransitioning ? 'transitioning' : ''}`}>
-      {/* Hero section with space background */}
-      <section className="hero-section">
-        {/* Enhanced space background for smooth transition */}
-        <div className="section-gradient-bg-enhanced">
-          <div className="stars-small"></div>
-          <div className="stars-medium"></div>
-          <div className="deep-stars"></div>
-          <div className="twinkling-stars"></div>
-          <div className="glowing-stars"></div>
-          
-          {/* Reduced number of shooting stars that appear randomly */}
-          <div className="shooting-stars">
-            <div className="shooting-star" style={{"--rotation": "15deg"} as React.CSSProperties}></div>
-            <div className="shooting-star" style={{"--rotation": "-20deg"} as React.CSSProperties}></div>
-            <div className="shooting-star" style={{"--rotation": "30deg"} as React.CSSProperties}></div>
+    <div style={{ background: '#fff', color: '#23272f', minHeight: '100vh' }}>
+      {/* Navigation bar */}
+      <nav style={{ 
+        background: '#fff', 
+        borderBottom: '1px solid #eee', 
+        padding: '1rem 2rem',
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        boxShadow: '0 2px 16px rgba(60,60,60,0.04)'
+      }}>
+        <div className="nav-container" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          <AnimatedLogo />
+          <div className="nav-links" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2rem'
+          }}>
+            <a href="#mission" className="nav-link" style={{ 
+              color: '#23272f',
+              textDecoration: 'none',
+              fontWeight: 500
+            }}>Mission</a>
+            <Link href="/signup">
+              <button className="btn btn-secondary" style={{ 
+                background: '#fff',
+                color: '#23272f',
+                border: '2px solid #23272f',
+                padding: '0.9rem 2.2rem',
+                borderRadius: '0.5rem',
+                fontWeight: 600,
+                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
+              }}>
+                Join BETA
+              </button>
+            </Link>
           </div>
         </div>
-        
-        {/* Navigation bar */}
-        <nav className="hero-nav">
-          <div className="nav-container">
-            <AnimatedLogo rocketLanded={rocketLanded} />
-            <div className="nav-links">
-              <a href="#mission" className="nav-link">Mission</a>
-              <Link href="/signup">
-                <button className="btn btn-cyan">Join BETA</button>
-              </Link>
-            </div>
-          </div>
-        </nav>
+      </nav>
 
-        {/* Main hero content */}
-        <div className="hero-content">
-          {/* Left side - text content */}
-          <div className="hero-text scroll-animate" ref={heroTextRef}>
-            <h1 className="hero-title animate-item">Professional Identity, Reimagined.</h1>
-            <p className="hero-subtitle animate-item">
-              Build professional credibility that <br />
-              <strong>breathes with <span className="hero-emphasis">YOU.</span></strong>
-            </p>
-            <div className="hero-cta animate-item flex justify-center">
-              <Link href="/signup">
-                <button className="helmet-cta-btn">Get Early Access</button>
-              </Link>
-            </div>
-          </div>
-
-          {/* Right side - Large astronaut helmet */}
-          <div className="astronaut-container">
-            <AstronautLogo />
+      {/* Main hero content */}
+      <div className="hero-content" style={{ 
+        background: '#fff', 
+        color: '#111', 
+        minHeight: '80vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        textAlign: 'center' 
+      }}>
+        <div className="hero-text" style={{ 
+          color: '#111', 
+          maxWidth: '800px', 
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
+          <h1 className="hero-title">Professional Identity, Reimagined.</h1>
+          <p className="hero-subtitle" style={{ textAlign: 'center', width: '100%' }}>
+            Build professional credibility that <strong>breathes with <span style={{ color: '#23272f' }}>YOU.</span></strong>
+          </p>
+          <div className="hero-cta" style={{ 
+            marginTop: '2rem', 
+            display: 'flex', 
+            justifyContent: 'center', 
+            width: '100%', 
+            visibility: 'visible' // Ensure visibility
+          }}>
+            <Link href="/signup">
+              <button
+                className="btn btn-primary"
+                style={{
+                  background: '#fff !important',
+                  color: '#23272f !important',
+                  border: '2px solid #23272f !important',
+                  padding: '0.9rem 2.2rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  letterSpacing: '0.5px',
+                }}
+              >
+                Join our waitlist
+              </button>
+            </Link>
           </div>
         </div>
-      </section>
-      
+      </div>
+
       {/* Mission section */}
-      <section id="mission" className="mission-section">
-        <div className="section-gradient-bg-3">
-          <div className="stars-small"></div>
-          <div className="stars-medium"></div>
-        </div>
-        
-        <div className="mission-container">
+      <section className="mission-section" style={{ 
+        background: '#fff', 
+        color: '#111', 
+        padding: '4rem 2rem',
+        textAlign: 'center'
+      }}>
+        <div className="mission-container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div className="mission-content">
-            <h2 className="mission-title scroll-animate" ref={missionRef}>
+            <h2 className="mission-title" style={{ 
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontWeight: '800',
+              marginBottom: '3rem',
+              color: '#23272f' 
+            }}>
               Empowering professionals to showcase real impact and growth in the digital age.
             </h2>
-            
-            <div className="mission-grid">
-              <div className="mission-card scroll-animate">
-                <h3 className="mission-card-title">Our Vision</h3>
-                <p className="mission-card-text">
+            <div className="mission-grid" style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+              gap: '2rem',
+              marginBottom: '3rem' 
+            }}>
+              <div className="mission-card" style={{ 
+                padding: '2rem', 
+                borderRadius: '0.75rem', 
+                backgroundColor: '#fff',
+                boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
+                border: '1px solid #eee'
+              }}>
+                <h3 className="mission-card-title" style={{ 
+                  fontSize: '1.5rem', 
+                  fontWeight: '700', 
+                  marginBottom: '1rem',
+                  color: '#23272f'
+                }}>
+                  Our Vision
+                </h3>
+                <p className="mission-card-text" style={{ color: '#444950' }}>
                   XYRAS is redefining how professional credibility is earned, tracked, and shared in the digital age.
                 </p>
               </div>
-              
-              <div className="mission-card scroll-animate">
-                <h3 className="mission-card-title">Our Focus</h3>
-                <p className="mission-card-text">
+              <div className="mission-card" style={{ 
+                padding: '2rem', 
+                borderRadius: '0.75rem', 
+                backgroundColor: '#fff',
+                boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
+                border: '1px solid #eee'
+              }}>
+                <h3 className="mission-card-title" style={{ 
+                  fontSize: '1.5rem', 
+                  fontWeight: '700', 
+                  marginBottom: '1rem',
+                  color: '#23272f'
+                }}>
+                  Our Focus
+                </h3>
+                <p className="mission-card-text" style={{ color: '#444950' }}>
                   We focus on what you've built, how you've grown, and the value you bring — not just where you've worked.
                 </p>
               </div>
             </div>
-            
-            <div className="mission-cta scroll-animate">
+            <div className="mission-cta" style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
               <Link href="/signup">
-                <button className="mission-cta-btn">
+                <button className="btn btn-primary" style={{ 
+                  background: '#fff',
+                  color: '#23272f',
+                  border: '2px solid #23272f',
+                  padding: '0.9rem 2.2rem',
+                  borderRadius: '0.5rem',
+                  fontWeight: 600,
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
+                }}>
                   Start Your Journey
                 </button>
               </Link>
@@ -274,6 +273,24 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Simple Footer */}
+      <footer style={{ 
+        background: '#fff', 
+        borderTop: '1px solid #eee',
+        padding: '2rem',
+        textAlign: 'center',
+        color: '#444950'
+      }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <AnimatedLogo />
+          </div>
+          <p style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
+            © {new Date().getFullYear()} XYRAS. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

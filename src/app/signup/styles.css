@@ -1,153 +1,138 @@
-/* Form Styles */
+/* Form Styles - minimal, no space/star/rocket */
 .bg-signup {
-  background: linear-gradient(180deg, #0c0918 0%, #090912 20%, #030308 60%, #000000 100%);
+  background: #fff !important;
   min-height: 100vh;
   padding: 2rem;
   position: relative;
   overflow: hidden;
 }
 
-/* Add stars to background */
 .bg-signup::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(1px 1px at 10% 10%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 20% 20%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 30% 30%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(1px 1px at 40% 40%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
-    radial-gradient(2px 2px at 50% 50%, rgba(4, 245, 243, 0.5) 1px, transparent 0),
-    radial-gradient(2px 2px at 60% 60%, rgba(4, 245, 243, 0.5) 1px, transparent 0),
-    radial-gradient(2px 2px at 70% 70%, rgba(4, 245, 243, 0.5) 1px, transparent 0),
-    radial-gradient(2px 2px at 80% 80%, rgba(4, 245, 243, 0.5) 1px, transparent 0);
-  opacity: 0.3;
-  z-index: 0;
+  display: none !important;
+}
+
+.signup-card,
+.success-card {
+  background: #fff !important;
+  border: 1px solid #eee !important;
+  color: #111 !important;
+  box-shadow: none !important;
 }
 
 .signup-card {
-  background: rgba(10, 9, 24, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(4, 245, 243, 0.2);
-  border-radius: 1.5rem;
-  position: relative;
-  animation: fadeIn 0.6s ease-out;
-  box-shadow: 0 8px 32px rgba(4, 245, 243, 0.15);
   max-width: 500px;
-  margin: 2rem auto;
-  z-index: 1;
+  width: 100%;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(60,60,60,0.04) !important;
 }
 
 .success-card {
-  background: rgba(10, 9, 24, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(4, 245, 243, 0.3);
-  border-radius: 1.5rem;
-  padding: 3.5rem;
-  text-align: center;
-  animation: successIn 0.6s ease-out;
-  box-shadow: 0 8px 32px rgba(4, 245, 243, 0.2),
-              inset 0 0 32px rgba(4, 245, 243, 0.1);
   max-width: 500px;
-  margin: 2rem auto;
+  width: 100%;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px rgba(60, 60, 60, 0.04) !important;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  animation: fadeInSuccess 0.8s ease-out forwards;
 }
 
 .success-icon {
-  font-size: 4rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
-  -webkit-background-clip: text;
-  color: transparent;
-  display: inline-block;
-  animation: pulse 2s infinite;
-  text-shadow: 0 0 30px rgba(4, 245, 243, 0.5);
+  display: none;
 }
 
 .form-input {
   width: 100%;
   padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(4, 245, 243, 0.2);
+  background: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 0.75rem;
-  color: white;
+  color: #23272f !important;
   font-size: 1rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   margin-bottom: 1.5rem;
 }
 
 .form-input:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(4, 245, 243, 0.3);
+  border-color: #bbb;
 }
 
 .form-input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.07);
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(4, 245, 243, 0.15),
-              0 4px 20px rgba(4, 245, 243, 0.1);
+  border-color: #23272f;
+  box-shadow: 0 2px 16px rgba(60,60,60,0.04);
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: #aaa;
   font-size: 0.95rem;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
-  color: white;
-  border: none;
-  border-radius: 1rem;
+  padding: 0.9rem 2.2rem;
+  background: #fff !important;
+  color: #23272f !important;
+  border: 2px solid #23272f !important;
+  border-radius: 0.5rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
   margin-top: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .submit-btn::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 200%;
+  left: -75%;
+  width: 150%;
   height: 100%;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
   );
-  transition: 0.5s;
+  transform: skewX(-25deg);
+  transition: 0.75s all ease;
 }
 
 .submit-btn:not(:disabled):hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(4, 245, 243, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .submit-btn:not(:disabled):hover::before {
   left: 100%;
 }
 
+.submit-btn:active {
+  transform: translateY(0);
+}
+
 .submit-btn.submitting {
   opacity: 0.7;
   cursor: not-allowed;
-  background: linear-gradient(135deg, #2a9998, #84087f);
+  background: #f5f5f5 !important;
 }
 
 /* Label styling */
 .form-label {
   display: block;
-  color: var(--accent-cyan);
+  color: #111 !important;
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -155,12 +140,20 @@
   text-transform: uppercase;
 }
 
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #23272f;
+  text-align: left;
+}
+
 /* Back button styling */
 .back-btn {
   position: absolute;
   top: 2rem;
   left: 2rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #111 !important;
   font-size: 0.9rem;
   text-decoration: none;
   display: flex;
@@ -180,9 +173,30 @@
   transform: translateX(-3px);
 }
 
+.back-btn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: #23272f;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-5px);
+  color: #444950;
+}
+
 /* Card padding */
 .card-content {
   padding: 3rem;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Responsive design */
@@ -279,4 +293,12 @@
     transform: scale(1.1);
     opacity: 0.8;
   }
+}
+
+.bg-signup, .signup-card, .success-card, .form-label, .form-input, .submit-btn, .back-btn {
+  color: #23272f !important;
+}
+
+.signup-card .subtitle, .success-card .subtitle, .form-label.secondary, .form-input.secondary {
+  color: #444950 !important;
 }
