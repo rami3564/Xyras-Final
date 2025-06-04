@@ -1,4 +1,4 @@
-/* Form Styles - minimal, no space/star/rocket */
+/* Form Styles - minimal, matching home page */
 .bg-signup {
   background: #fff !important;
   min-height: 100vh;
@@ -16,26 +16,31 @@
   background: #fff !important;
   border: 1px solid #eee !important;
   color: #111 !important;
-  box-shadow: none !important;
+  box-shadow: 0 4px 24px rgba(60, 60, 60, 0.07) !important;
+  transition: all 0.3s ease;
 }
 
 .signup-card {
   max-width: 500px;
   width: 100%;
-  padding: 2.5rem;
+  padding: 3rem;
   border-radius: 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(60,60,60,0.04) !important;
+  animation: cardFadeIn 0.8s ease-out forwards;
+}
+
+.signup-card:hover {
+  box-shadow: 0 6px 30px rgba(60, 60, 60, 0.1) !important;
+  transform: translateY(-3px);
 }
 
 .success-card {
   max-width: 500px;
   width: 100%;
-  padding: 2.5rem;
+  padding: 3rem;
   border-radius: 1.5rem;
-  box-shadow: 0 2px 16px rgba(60, 60, 60, 0.04) !important;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -43,8 +48,23 @@
   animation: fadeInSuccess 0.8s ease-out forwards;
 }
 
+.success-card:hover {
+  box-shadow: 0 6px 30px rgba(60, 60, 60, 0.1) !important;
+  transform: translateY(-3px);
+}
+
 .success-icon {
   display: none;
+}
+
+.form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #23272f;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
 }
 
 .form-input {
@@ -66,7 +86,7 @@
 .form-input:focus {
   outline: none;
   border-color: #23272f;
-  box-shadow: 0 2px 16px rgba(60,60,60,0.04);
+  box-shadow: 0 2px 16px rgba(60, 60, 60, 0.04);
 }
 
 .form-input::placeholder {
@@ -87,182 +107,46 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  text-transform: uppercase;
   margin-top: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
 
-.submit-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 150%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0)
-  );
-  transform: skewX(-25deg);
-  transition: 0.75s all ease;
-}
-
-.submit-btn:not(:disabled):hover {
+.submit-btn:hover {
+  background: #23272f !important;
+  color: #fff !important;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.submit-btn:not(:disabled):hover::before {
-  left: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .submit-btn:active {
   transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.submit-btn.submitting {
+.submit-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  background: #f5f5f5 !important;
+  transform: none;
 }
 
-/* Label styling */
-.form-label {
-  display: block;
-  color: #111 !important;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #23272f;
-  text-align: left;
-}
-
-/* Back button styling */
-.back-btn {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  color: #111 !important;
-  font-size: 0.9rem;
-  text-decoration: none;
+/* Logo animation styles matching home page */
+.logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 10;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111;
 }
 
-.back-btn:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(-3px);
+.logo-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
 }
 
-.back-btn {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  color: #23272f;
-  text-decoration: none;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover {
-  transform: translateX(-5px);
-  color: #444950;
-}
-
-/* Card padding */
-.card-content {
-  padding: 3rem;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .signup-card,
-  .success-card {
-    margin: 1rem;
-    padding: 2rem;
-  }
-
-  .card-content {
-    padding: 2rem;
-  }
-
-  .back-btn {
-    top: 1rem;
-    left: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .signup-card,
-  .success-card {
-    margin: 0.5rem;
-    padding: 1.5rem;
-  }
-
-  .card-content {
-    padding: 1.5rem;
-  }
-
-  .form-input {
-    padding: 0.875rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  .submit-btn {
-    padding: 0.875rem 1.25rem;
-    font-size: 1rem;
-  }
-
-  .back-btn {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.8rem;
-  }
-}
-
-/* Loading animation for submit button */
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-.submit-btn.submitting {
-  background: linear-gradient(
-    90deg,
-    var(--accent-cyan),
-    var(--accent-pink),
-    var(--accent-cyan)
-  );
-  background-size: 200% 100%;
-  animation: loading 2s linear infinite;
-  cursor: not-allowed;
-}
-
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -273,32 +157,60 @@
   }
 }
 
-@keyframes successIn {
+/* Card fade-in animation */
+@keyframes cardFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
+/* Hero title and subtitle styles */
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #23272f;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #444950;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Success animation */
+@keyframes fadeInSuccess {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
     opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
+    transform: translateY(0);
   }
 }
 
-.bg-signup, .signup-card, .success-card, .form-label, .form-input, .submit-btn, .back-btn {
-  color: #23272f !important;
-}
-
-.signup-card .subtitle, .success-card .subtitle, .form-label.secondary, .form-input.secondary {
-  color: #444950 !important;
+/* Responsive styles */
+@media (max-width: 640px) {
+  .signup-card,
+  .success-card {
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
 }
