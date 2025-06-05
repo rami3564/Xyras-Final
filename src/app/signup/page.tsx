@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { createClient } from '@supabase/supabase-js';
 
@@ -45,7 +45,7 @@ export default function SignupPage() {
   const [isNavSticky, setIsNavSticky] = useState(false);
 
   // Handle scroll for sticky navigation
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsNavSticky(true);
@@ -58,7 +58,7 @@ export default function SignupPage() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -268,7 +268,7 @@ export default function SignupPage() {
                   marginBottom: '0.5rem', 
                   display: 'block', 
                   textAlign: 'left',
-                  fontWeight: '600', /* Added font weight */
+                  fontWeight: 600, /* Added font weight */
                   color: '#23272f' /* Matching text color */
                 }}>Full Name</label>
                 <input
@@ -297,7 +297,7 @@ export default function SignupPage() {
                   marginBottom: '0.5rem', 
                   display: 'block', 
                   textAlign: 'left',
-                  fontWeight: '600', /* Added font weight */
+                  fontWeight: 600, /* Added font weight */
                   color: '#23272f' /* Matching text color */
                 }}>Email</label>
                 <input
@@ -326,7 +326,7 @@ export default function SignupPage() {
                   marginBottom: '0.5rem', 
                   display: 'block', 
                   textAlign: 'left',
-                  fontWeight: '600', /* Added font weight */
+                  fontWeight: 600, /* Added font weight */
                   color: '#23272f' /* Matching text color */
                 }}>Tell us about you (optional)</label>
                 <textarea
