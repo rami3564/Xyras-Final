@@ -335,9 +335,9 @@ export default function HomePage() {
                 backgroundColor: '#fff',
                 boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
                 border: '1px solid #eee',
-                opacity: 0, /* Start hidden */
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s, box-shadow 0.3s ease, transform 0.3s ease'
+                opacity: 1, /* Changed from 0 to 1 */
+                transform: 'translateY(0)', /* Changed from translateY(20px) */
+                transition: 'box-shadow 0.3s ease, transform 0.3s ease'
               }}>
                 <h3 className="mission-card-title" style={{ 
                   fontSize: '1.75rem',
@@ -361,9 +361,9 @@ export default function HomePage() {
                 backgroundColor: '#fff',
                 boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
                 border: '1px solid #eee',
-                opacity: 0, /* Start hidden */
-                transform: 'translateY(20px)',
-                transition: 'opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s, box-shadow 0.3s ease, transform 0.3s ease'
+                opacity: 1, /* Changed from 0 to 1 */
+                transform: 'translateY(0)', /* Changed from translateY(20px) */
+                transition: 'box-shadow 0.3s ease, transform 0.3s ease'
               }}>
                 <h3 className="mission-card-title" style={{ 
                   fontSize: '1.75rem',
@@ -385,10 +385,10 @@ export default function HomePage() {
             <div className="mission-cta" style={{ 
               display: 'flex', 
               justifyContent: 'center', 
-              marginTop: '3rem', /* Increased from 2.5rem */
-              opacity: 0, /* Start hidden */
-              transform: 'translateY(20px)',
-              transition: 'opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s'
+              marginTop: '3rem',
+              opacity: 1, /* Changed from 0 to 1 */
+              transform: 'translateY(0)', /* Changed from translateY(20px) */
+              transition: 'transform 0.3s ease'
             }}>
               <Link href="/signup">
                 <button className="btn btn-primary" style={{ 
