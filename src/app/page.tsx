@@ -201,17 +201,17 @@ export default function HomePage() {
             </a>
             <Link href="/signup">
               <button className="btn btn-secondary" style={{ 
-                background: '#fff',
                 color: '#23272f',
-                border: '2px solid #23272f',
+                border: '1px solid rgba(35, 39, 47, 0.1)',
                 padding: '0.9rem 2.2rem',
                 borderRadius: '0.5rem',
                 fontWeight: 600,
                 fontSize: '1.1rem',
-                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.3s ease',
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                cursor: 'pointer'
               }}>
                 Join BETA
               </button>
@@ -270,18 +270,17 @@ export default function HomePage() {
               <button
                 className="btn btn-primary"
                 style={{
-                  background: '#fff',
                   color: '#23272f',
-                  border: '2px solid #23272f',
+                  border: '1px solid rgba(35, 39, 47, 0.1)',
                   padding: '1rem 2.5rem',
                   borderRadius: '0.5rem',
                   fontWeight: 600,
                   fontSize: '1.2rem',
-                  letterSpacing: '0.5px',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  cursor: 'pointer'
                 }}
               >
                 Join our waitlist
@@ -335,25 +334,43 @@ export default function HomePage() {
                 backgroundColor: '#fff',
                 boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
                 border: '1px solid #eee',
-                opacity: 1, /* Changed from 0 to 1 */
-                transform: 'translateY(0)', /* Changed from translateY(20px) */
-                transition: 'box-shadow 0.3s ease, transform 0.3s ease'
+                opacity: 1,
+                transform: 'translateY(0)',
+                transition: 'all 0.5s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                cursor: 'pointer'
               }}>
-                <h3 className="mission-card-title" style={{ 
-                  fontSize: '1.75rem',
-                  fontWeight: '700', 
-                  marginBottom: '1rem',
-                  color: '#23272f'
-                }}>
-                  Our Vision
-                </h3>
-                <p className="mission-card-text" style={{ 
-                  color: '#444950',
-                  fontSize: '1.15rem',
-                  lineHeight: '1.6'
-                }}>
-                  XYRAS is redefining how professional credibility is earned, tracked, and shared in the digital age.
-                </p>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                  opacity: 0,
+                  transition: 'opacity 0.5s ease',
+                  zIndex: 0
+                }} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <h3 className="mission-card-title" style={{ 
+                    fontSize: '1.75rem',
+                    fontWeight: '700', 
+                    marginBottom: '1rem',
+                    color: '#23272f',
+                    transition: 'color 0.5s ease'
+                  }}>
+                    Our Vision
+                  </h3>
+                  <p className="mission-card-text" style={{ 
+                    color: '#444950',
+                    fontSize: '1.15rem',
+                    lineHeight: '1.6',
+                    transition: 'color 0.5s ease'
+                  }}>
+                    XYRAS is redefining how professional credibility is earned, tracked, and shared in the digital age.
+                  </p>
+                </div>
               </div>
               <div className="mission-card" style={{ 
                 padding: '2.5rem',
@@ -361,25 +378,43 @@ export default function HomePage() {
                 backgroundColor: '#fff',
                 boxShadow: '0 2px 16px rgba(60,60,60,0.04)',
                 border: '1px solid #eee',
-                opacity: 1, /* Changed from 0 to 1 */
-                transform: 'translateY(0)', /* Changed from translateY(20px) */
-                transition: 'box-shadow 0.3s ease, transform 0.3s ease'
+                opacity: 1,
+                transform: 'translateY(0)',
+                transition: 'all 0.5s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                cursor: 'pointer'
               }}>
-                <h3 className="mission-card-title" style={{ 
-                  fontSize: '1.75rem',
-                  fontWeight: '700', 
-                  marginBottom: '1rem',
-                  color: '#23272f'
-                }}>
-                  Our Focus
-                </h3>
-                <p className="mission-card-text" style={{ 
-                  color: '#444950',
-                  fontSize: '1.15rem',
-                  lineHeight: '1.6'
-                }}>
-                  We focus on what you've built, how you've grown, and the value you bring — not just where you've worked.
-                </p>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(45deg, #6B66FF, #FF6B6B)',
+                  opacity: 0,
+                  transition: 'opacity 0.5s ease',
+                  zIndex: 0
+                }} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <h3 className="mission-card-title" style={{ 
+                    fontSize: '1.75rem',
+                    fontWeight: '700', 
+                    marginBottom: '1rem',
+                    color: '#23272f',
+                    transition: 'color 0.5s ease'
+                  }}>
+                    Our Focus
+                  </h3>
+                  <p className="mission-card-text" style={{ 
+                    color: '#444950',
+                    fontSize: '1.15rem',
+                    lineHeight: '1.6',
+                    transition: 'color 0.5s ease'
+                  }}>
+                    We focus on what you've built, how you've grown, and the value you bring — not just where you've worked.
+                  </p>
+                </div>
               </div>
             </div>
             <div className="mission-cta" style={{ 
@@ -392,17 +427,17 @@ export default function HomePage() {
             }}>
               <Link href="/signup">
                 <button className="btn btn-primary" style={{ 
-                  background: '#fff',
                   color: '#23272f',
-                  border: '2px solid #23272f',
+                  border: '1px solid rgba(35, 39, 47, 0.1)',
                   padding: '1rem 2.5rem',
                   borderRadius: '0.5rem',
                   fontWeight: 600,
                   fontSize: '1.2rem',
-                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
                   transition: 'all 0.3s ease',
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  cursor: 'pointer'
                 }}>
                   Start Your Journey
                 </button>

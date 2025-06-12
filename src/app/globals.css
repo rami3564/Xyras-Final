@@ -252,6 +252,59 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  transition: all 0.5s ease !important;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.mission-card:hover > div:first-child {
+  opacity: 0.1 !important;
+}
+
+.mission-card:hover .mission-card-title {
+  color: #23272f !important;
+  transform: scale(1.02);
+}
+
+.mission-card:hover .mission-card-text {
+  color: #444950 !important;
+}
+
+/* Add a subtle shine effect */
+.mission-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.mission-card:hover::after {
+  opacity: 1;
+  animation: shine 1.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
 }
 
 .mission-card-title {
@@ -366,9 +419,12 @@ body {
 }
 
 .btn-secondary {
-  background: #fff;
-  color: #23272f;
-  border: 2px solid #23272f;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 107, 107, 0.08),
+    rgba(78, 205, 196, 0.08),
+    rgba(107, 102, 255, 0.08)
+  ) !important;
 }
 
 .btn-secondary:hover {
@@ -1103,5 +1159,71 @@ a:hover {
 button {
   font-family: 'Inter', sans-serif;
   cursor: pointer;
+}
+
+/* Rotating gradient animation */
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 50% 50%;
+  }
+  66% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn {
+  position: relative;
+  transition: all 0.3s ease !important;
+  background-size: 300% 100% !important;
+  animation: rotateGradient 15s ease infinite !important;
+}
+
+.btn-secondary {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 107, 107, 0.08),
+    rgba(78, 205, 196, 0.08),
+    rgba(107, 102, 255, 0.08)
+  ) !important;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    45deg,
+    rgba(107, 102, 255, 0.08),
+    rgba(255, 107, 107, 0.08),
+    rgba(78, 205, 196, 0.08)
+  ) !important;
+}
+
+.btn:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.03)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover::before {
+  opacity: 1;
 }
 
