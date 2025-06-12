@@ -637,11 +637,61 @@ body {
 }
 
 @media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+    padding: 0 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.5rem) !important;
+    padding: 0 1rem;
+  }
+
+  .mission-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .mission-card {
+    padding: 1.5rem !important;
+  }
+
+  .mission-card-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .mission-card-text {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .btn {
+    padding: 0.8rem 1.8rem !important;
+    font-size: 1rem !important;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 0 1rem !important;
+  }
+
+  .mission-section {
+    padding: 4rem 1rem 3rem !important;
+  }
+
   .hero-content {
-    flex-direction: column-reverse;
-    gap: 2rem;
-    padding-top: 4rem;
-    text-align: center;
+    padding: 3rem 1rem 2rem !important;
+    min-height: 70vh !important;
+  }
+
+  .nav-links {
+    gap: 1.5rem !important;
+  }
+
+  .nav-link {
+    font-size: 1rem !important;
   }
 
   .hero-text {
@@ -669,6 +719,46 @@ body {
   .astronaut-image {
     width: clamp(200px, 70vw, 400px);
     height: clamp(200px, 70vw, 400px);
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem) !important;
+  }
+
+  .mission-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
+  }
+
+  .mission-card {
+    padding: 1.25rem !important;
+  }
+
+  .mission-card-title {
+    font-size: 1.3rem !important;
+  }
+
+  .mission-card-text {
+    font-size: 0.95rem !important;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .nav-links {
+    gap: 1rem !important;
+  }
+
+  .nav-link {
+    font-size: 0.95rem !important;
   }
 }
 
@@ -1225,5 +1315,126 @@ button {
 
 .btn:hover::before {
   opacity: 1;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem) !important;
+    padding: 0 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.5rem) !important;
+    padding: 0 1rem;
+  }
+
+  .mission-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .mission-card {
+    padding: 1.5rem !important;
+  }
+
+  .mission-card-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .mission-card-text {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .btn {
+    padding: 0.8rem 1.8rem !important;
+    font-size: 1rem !important;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 0 1rem !important;
+  }
+
+  .mission-section {
+    padding: 4rem 1rem 3rem !important;
+  }
+
+  .hero-content {
+    padding: 3rem 1rem 2rem !important;
+    min-height: 70vh !important;
+  }
+
+  .nav-links {
+    gap: 1.5rem !important;
+  }
+
+  .nav-link {
+    font-size: 1rem !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem) !important;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem) !important;
+  }
+
+  .mission-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem) !important;
+  }
+
+  .mission-card {
+    padding: 1.25rem !important;
+  }
+
+  .mission-card-title {
+    font-size: 1.3rem !important;
+  }
+
+  .mission-card-text {
+    font-size: 0.95rem !important;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .nav-links {
+    gap: 1rem !important;
+  }
+
+  .nav-link {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Ensure proper spacing on all devices */
+.hero-content, .mission-section {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Improve button container spacing */
+.hero-cta, .mission-cta {
+  padding: 0 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure proper text wrapping */
+.hero-subtitle, .mission-card-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
