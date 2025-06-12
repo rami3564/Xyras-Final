@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'XYRAS - Ditch the résumé',
+  title: 'XYRAS',
   description:
     'Build professional credibility that breathes with YOU. Next-gen professional network that replaces a résumé with a real-time professional score.',
   keywords:
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'XYRAS Team' }],
   metadataBase: new URL('https://xyras.com'),
   openGraph: {
-    title: 'XYRAS - Ditch the résumé',
+    title: 'XYRAS',
     description: 'Build professional credibility that breathes with YOU.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'XYRAS - Ditch the résumé',
+    title: 'XYRAS',
     description: 'Build professional credibility that breathes with YOU.',
   },
 }
