@@ -1317,16 +1317,81 @@ button {
   opacity: 1;
 }
 
+/* Hero Section Responsive Design */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    text-align: center !important;
+  }
+  
+  .hero-text {
+    order: 2;
+  }
+  
+  .app-preview {
+    order: 1;
+  }
+  
+  .hero-title {
+    text-align: center !important;
+  }
+  
+  .hero-subtitle {
+    text-align: center !important;
+  }
+  
+  .beta-announcement {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .hero-cta {
+    justify-content: center !important;
+  }
+}
+
 /* Responsive Design Improvements */
 @media (max-width: 768px) {
+  .hero-content {
+    padding: 3rem 1rem 2rem !important;
+    min-height: 70vh !important;
+  }
+  
+  .hero-container {
+    gap: 2rem !important;
+  }
+  
   .hero-title {
     font-size: clamp(2rem, 5vw, 3rem) !important;
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .hero-subtitle {
     font-size: clamp(1.1rem, 3vw, 1.5rem) !important;
-    padding: 0 1rem;
+    padding: 0;
+  }
+  
+  .app-preview > div {
+    padding: 1rem !important;
+    border-radius: 1rem !important;
+  }
+  
+  .app-preview img {
+    max-height: 350px !important;
+  }
+  
+  .hero-cta {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+  
+  .beta-announcement {
+    max-width: 100% !important;
+    padding: 1.2rem !important;
   }
 
   .mission-title {
@@ -1436,5 +1501,59 @@ button {
 .hero-subtitle, .mission-card-text {
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+/* Pulse animation for beta announcement */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+}
+
+/* Shimmer effect for beta announcement */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Slide effect for beta announcement */
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Progress bar pulse animation */
+@keyframes progressPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(68, 231, 149, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(68, 231, 149, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(68, 231, 149, 0.5);
+  }
 }
 

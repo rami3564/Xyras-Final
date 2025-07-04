@@ -224,79 +224,177 @@ export default function HomePage() {
       <div className="hero-content" style={{ 
         background: '#fff', 
         color: '#111', 
-        minHeight: '80vh', /* Increased from 75vh */
+        minHeight: '85vh',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center', 
-        textAlign: 'center',
-        padding: '4rem 1rem 2rem', /* Increased top padding from 3rem */
-        marginTop: '3rem' /* Increased from 2rem */
+        padding: '4rem 2rem 2rem',
+        marginTop: '2rem'
       }}>
-        <div 
-          ref={heroTextRef}
-          className="hero-text" 
-          style={{ 
-            color: '#111', 
-            maxWidth: '900px',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center'
-          }}
-        >
-          <h1 className="hero-title" style={{
-            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-            fontWeight: '900',
-            marginBottom: '1.5rem',
-            lineHeight: '1.1'
-          }}>Professional Identity, Reimagined.</h1>
-          <p className="hero-subtitle" style={{ 
-            textAlign: 'center', 
-            width: '100%',
-            fontSize: 'clamp(1.3rem, 3vw, 2rem)',
-            lineHeight: '1.4',
-            marginBottom: '1rem'
-          }}>
-            Build professional credibility that <strong>breathes with <span style={{ color: '#23272f' }}>YOU.</span></strong>
-          </p>
-          <div className="hero-cta" style={{ 
-            marginTop: '2.8rem', /* Increased from 2.5rem */
-            display: 'flex', 
-            justifyContent: 'center', 
-            width: '100%', 
-            visibility: 'visible'
-          }}>
-            <Link href="/signup">
-              <button
-                className="btn btn-primary"
+        <div className="hero-container" style={{
+          maxWidth: '1400px',
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '4rem',
+          alignItems: 'center'
+        }}>
+          {/* Left Column - Text Content */}
+          <div 
+            ref={heroTextRef}
+            className="hero-text" 
+            style={{ 
+              color: '#111'
+            }}
+          >
+            <h1 className="hero-title" style={{
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              fontWeight: '900',
+              marginBottom: '1.5rem',
+              lineHeight: '1.1',
+              textAlign: 'left'
+            }}>Your Professional Score Shows It All.</h1>
+            <p className="hero-subtitle" style={{ 
+              textAlign: 'left',
+              fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+              lineHeight: '1.6',
+              marginBottom: '2rem',
+              color: '#444950'
+            }}>
+              Build your professional identity for the future.
+            </p>
+            
+            <div className="hero-cta" style={{
+              marginTop: '1.5rem',
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              width: '100%'
+            }}>
+              <a 
+                href="#mission" 
+                onClick={scrollToMission}
                 style={{
                   color: '#23272f',
-                  border: '1px solid rgba(35, 39, 47, 0.1)',
-                  padding: '1rem 2.5rem',
-                  borderRadius: '0.5rem',
+                  background: 'transparent',
+                  border: '2px solid #23272f',
+                  textDecoration: 'none',
+                  fontSize: '1.08rem',
                   fontWeight: 600,
-                  fontSize: '1.2rem',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-                  transition: 'all 0.3s ease',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  cursor: 'pointer'
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  borderRadius: '0.5rem',
+                  padding: '0.85rem 2.2rem',
+                  boxShadow: '0 2px 8px rgba(35, 39, 47, 0.06)',
+                  transition: 'background 0.3s, color 0.3s, border 0.3s',
+                  cursor: 'pointer',
+                  letterSpacing: '0.01em',
+                  marginLeft: '0',
                 }}
               >
-                Join our waitlist
-              </button>
-            </Link>
+                Learn More <span style={{ fontSize: '1.2em', display: 'inline-block', transform: 'translateY(1px)' }}>→</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column - App Preview */}
+          <div className="app-preview" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+            background: '#fff',
+            borderRadius: '2rem',
+            padding: '2rem',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.10)',
+            minWidth: '320px',
+            minHeight: '320px',
+          }}>
+            <img 
+              src="/assets/image.png" 
+              alt="XYRAS Professional Score App Preview" 
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+                borderRadius: '1rem',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.10)',
+                maxHeight: '500px',
+                objectFit: 'contain',
+                background: '#fff',
+                position: 'relative',
+                zIndex: 2
+              }}
+            />
+            {/* Beta Progress Announcement under image */}
+            <div className="beta-announcement" style={{
+              background: '#fff',
+              color: '#23272f',
+              padding: '1.2rem',
+              borderRadius: '1rem',
+              marginTop: '1.5rem',
+              fontSize: '1rem',
+              fontWeight: 500,
+              boxShadow: '0 2px 12px rgba(60,60,60,0.06)',
+              border: '1px solid #e9ecef',
+              maxWidth: '320px',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              marginLeft: 'auto',
+              marginRight: 'auto'
+            }}>
+              <div style={{ marginBottom: '0.7rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600, fontSize: '1.05rem' }}>
+                <span role="img" aria-label="rocket">🚀</span> Beta Launch Progress
+              </div>
+              <div style={{
+                background: '#f1f5f9',
+                borderRadius: '8px',
+                height: '8px',
+                marginBottom: '0.5rem',
+                width: '100%',
+                overflow: 'hidden',
+                border: '1px solid #e9ecef'
+              }}>
+                <div style={{
+                  background: 'linear-gradient(90deg, #23272f 0%, #444950 100%)',
+                  height: '100%',
+                  width: '87%',
+                  borderRadius: '8px',
+                  transition: 'width 0.6s cubic-bezier(.4,2,.6,1)'
+                }}></div>
+              </div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.8, fontWeight: 500 }}>
+                87% complete
+              </div>
+            </div>
+            {/* Badge overlay */}
+            <div style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'linear-gradient(135deg, #23272f, #444950)',
+              color: 'white',
+              padding: '0.5rem 1rem',
+              borderRadius: '2rem',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              zIndex: 3,
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
+            }}>
+              Beta Preview
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mission section */}
+      {/* Mission section (Introducing the XYRAS Professional Score) */}
       <section id="mission" className="mission-section" style={{ 
         background: '#fff', 
         color: '#111', 
         padding: '7rem 2rem 4rem', /* Increased top padding from 6rem */
         textAlign: 'center',
-        marginTop: '22vh', /* Increased from 18vh */
         scrollMarginTop: '120px', /* Increased from 100px */
         minHeight: '90vh',
         display: 'flex',
@@ -320,8 +418,23 @@ export default function HomePage() {
                 position: 'relative'
               }}
             >
-              Empowering professionals to showcase real impact and growth in the digital age.
+              Introducing the XYRAS Professional Score (XPS)
             </h2>
+            <div style={{ 
+              textAlign: 'center',
+              marginBottom: '3rem'
+            }}>
+              <p style={{ 
+                fontSize: '1.3rem',
+                color: '#444950',
+                lineHeight: '1.6',
+                maxWidth: '800px',
+                margin: '0 auto'
+              }}>
+                The first comprehensive system that captures your professional growth, 
+                impact, and credibility in a single, dynamic score.
+              </p>
+            </div>
             <div className="mission-grid" style={{ 
               display: 'grid', 
               gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -347,12 +460,13 @@ export default function HomePage() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+                  background: 'linear-gradient(45deg, #667eea, #764ba2)',
                   opacity: 0,
                   transition: 'opacity 0.5s ease',
                   zIndex: 0
                 }} />
                 <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚀</div>
                   <h3 className="mission-card-title" style={{ 
                     fontSize: '1.75rem',
                     fontWeight: '700', 
@@ -360,7 +474,7 @@ export default function HomePage() {
                     color: '#23272f',
                     transition: 'color 0.5s ease'
                   }}>
-                    Our Vision
+                    Dynamic Growth
                   </h3>
                   <p className="mission-card-text" style={{ 
                     color: '#444950',
@@ -368,7 +482,7 @@ export default function HomePage() {
                     lineHeight: '1.6',
                     transition: 'color 0.5s ease'
                   }}>
-                    XYRAS is redefining how professional credibility is earned, tracked, and shared in the digital age.
+                    Your XPS evolves as you do. Track skill development, project outcomes, and career milestones in real-time.
                   </p>
                 </div>
               </div>
@@ -391,12 +505,13 @@ export default function HomePage() {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: 'linear-gradient(45deg, #6B66FF, #FF6B6B)',
+                  background: 'linear-gradient(45deg, #f093fb, #f5576c)',
                   opacity: 0,
                   transition: 'opacity 0.5s ease',
                   zIndex: 0
                 }} />
                 <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎯</div>
                   <h3 className="mission-card-title" style={{ 
                     fontSize: '1.75rem',
                     fontWeight: '700', 
@@ -404,7 +519,7 @@ export default function HomePage() {
                     color: '#23272f',
                     transition: 'color 0.5s ease'
                   }}>
-                    Our Focus
+                    Verified Impact
                   </h3>
                   <p className="mission-card-text" style={{ 
                     color: '#444950',
@@ -412,7 +527,7 @@ export default function HomePage() {
                     lineHeight: '1.6',
                     transition: 'color 0.5s ease'
                   }}>
-                    We focus on what you've built, how you've grown, and the value you bring — not just where you've worked.
+                    Move beyond job titles. Showcase quantifiable contributions and peer-verified achievements that demonstrate real value.
                   </p>
                 </div>
               </div>
@@ -439,9 +554,750 @@ export default function HomePage() {
                   overflow: 'hidden',
                   cursor: 'pointer'
                 }}>
-                  Start Your Journey
+                  Get Early Access
                 </button>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Journey/Timeline Section */}
+      <section className="identity-journey-section" style={{
+        background: '#f8f9fa',
+        padding: '3rem 0 2rem 0',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '2rem',
+          maxWidth: '1100px',
+          width: '100%',
+          margin: '0 auto',
+          justifyContent: 'center',
+        }}>
+          {/* Resume */}
+          <div style={{
+            background: '#fff',
+            borderRadius: '1rem',
+            boxShadow: '0 2px 12px rgba(60,60,60,0.06)',
+            padding: '2.2rem 1.5rem',
+            textAlign: 'center',
+            minWidth: '220px',
+            flex: '1 1 220px',
+            border: '1px solid #e9ecef',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ fontSize: '2.2rem', marginBottom: '0.7rem' }}>📄</div>
+            <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.3rem', color: '#23272f' }}>Your Resume</div>
+            <div style={{ color: '#444950', fontSize: '1rem' }}>Captures your past roles and achievements.</div>
+          </div>
+          {/* Network */}
+          <div style={{
+            background: '#fff',
+            borderRadius: '1rem',
+            boxShadow: '0 2px 12px rgba(60,60,60,0.06)',
+            padding: '2.2rem 1.5rem',
+            textAlign: 'center',
+            minWidth: '220px',
+            flex: '1 1 220px',
+            border: '1px solid #e9ecef',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ fontSize: '2.2rem', marginBottom: '0.7rem' }}>🔗</div>
+            <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.3rem', color: '#23272f' }}>Your Network</div>
+            <div style={{ color: '#444950', fontSize: '1rem' }}>Reflects who you know and your connections.</div>
+          </div>
+          {/* Brand */}
+          <div style={{
+            background: '#fff',
+            borderRadius: '1rem',
+            boxShadow: '0 2px 12px rgba(60,60,60,0.06)',
+            padding: '2.2rem 1.5rem',
+            textAlign: 'center',
+            minWidth: '220px',
+            flex: '1 1 220px',
+            border: '1px solid #e9ecef',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{ fontSize: '2.2rem', marginBottom: '0.7rem' }}>💡</div>
+            <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.3rem', color: '#23272f' }}>Your Brand</div>
+            <div style={{ color: '#444950', fontSize: '1rem' }}>Shows how you think and present yourself.</div>
+          </div>
+          {/* XPS */}
+          <div style={{
+            background: 'linear-gradient(135deg, #23272f 0%, #444950 100%)',
+            borderRadius: '1rem',
+            boxShadow: '0 4px 18px rgba(60,60,60,0.10)',
+            padding: '2.2rem 1.5rem',
+            textAlign: 'center',
+            minWidth: '220px',
+            flex: '1 1 220px',
+            border: '1px solid #23272f',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+          }}>
+            <div style={{ fontSize: '2.2rem', marginBottom: '0.7rem' }}>⚡</div>
+            <div style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.3rem', color: 'white' }}>Your XPS</div>
+            <div style={{ color: 'rgba(255,255,255,0.92)', fontSize: '1rem' }}>Reveals your real impact, growth, and credibility—all in one living score.</div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Demo Section */}
+      <section className="demo-section" style={{ 
+        background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)', 
+        color: '#111', 
+        padding: '6rem 2rem',
+        textAlign: 'center',
+        marginTop: '5rem'
+      }}>
+        <div className="demo-container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '1rem',
+            color: '#23272f'
+          }}>
+            See Your XPS in Action
+          </h2>
+          <p style={{ 
+            fontSize: '1.2rem',
+            color: '#444950',
+            marginBottom: '3rem',
+            maxWidth: '600px',
+            margin: '0 auto 3rem auto'
+          }}>
+            Watch how your professional identity evolves beyond traditional metrics
+          </p>
+          
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            <div style={{ 
+              background: '#fff',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+              border: '1px solid #e9ecef',
+              position: 'relative',
+              overflow: 'hidden',
+              filter: 'blur(6px)',
+              opacity: 0.7
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'linear-gradient(90deg, #ff6b6b, #4ecdc4)',
+                animation: 'shimmer 2s ease-in-out infinite'
+              }}></div>
+              <h3 style={{ 
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                📊 Growth Tracking
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                marginBottom: '1.5rem'
+              }}>
+                Track your skill development, project impact, and professional milestones in real-time
+              </p>
+              <div style={{
+                background: '#f8f9fa',
+                padding: '1rem',
+                borderRadius: '0.5rem',
+                border: '1px solid #e9ecef',
+                textAlign: 'center'
+              }}>
+                {/* Metric placeholder intentionally blurred */}
+              </div>
+            </div>
+            
+            <div style={{ 
+              background: '#fff',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+              border: '1px solid #e9ecef',
+              position: 'relative',
+              overflow: 'hidden',
+              filter: 'blur(6px)',
+              opacity: 0.7
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'linear-gradient(90deg, #764ba2, #667eea)',
+                animation: 'shimmer 2s ease-in-out infinite 0.5s'
+              }}></div>
+              <h3 style={{ 
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                🎯 Impact Measurement
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                marginBottom: '1.5rem'
+              }}>
+                Quantify your real-world contributions and the value you create for organizations
+              </p>
+              <div style={{
+                background: '#f8f9fa',
+                padding: '1rem',
+                borderRadius: '0.5rem',
+                border: '1px solid #e9ecef',
+                textAlign: 'center'
+              }}>
+                {/* Metric placeholder intentionally blurred */}
+              </div>
+            </div>
+            
+            <div style={{ 
+              background: '#fff',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+              border: '1px solid #e9ecef',
+              position: 'relative',
+              overflow: 'hidden',
+              filter: 'blur(6px)',
+              opacity: 0.7
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'linear-gradient(90deg, #f093fb, #f5576c)',
+                animation: 'shimmer 2s ease-in-out infinite 1s'
+              }}></div>
+              <h3 style={{ 
+                fontSize: '1.5rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                🤝 Credibility Network
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                marginBottom: '1.5rem'
+              }}>
+                Build verified professional relationships and peer endorsements that matter
+              </p>
+              <div style={{
+                background: '#f8f9fa',
+                padding: '1rem',
+                borderRadius: '0.5rem',
+                border: '1px solid #e9ecef',
+                textAlign: 'center'
+              }}>
+                {/* Metric placeholder intentionally blurred */}
+              </div>
+            </div>
+          </div>
+          {/* Add a single line below the grid of blurred cards */}
+          <div style={{
+            textAlign: 'center',
+            marginTop: '1.5rem',
+            color: '#888',
+            fontSize: '1.08rem',
+            fontWeight: 500,
+            letterSpacing: '0.01em'
+          }}>
+            Join the beta to find out more
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="comparison-section" style={{ 
+        background: '#fff', 
+        color: '#111', 
+        padding: '6rem 2rem',
+        textAlign: 'center'
+      }}>
+        <div className="comparison-container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '1rem',
+            color: '#23272f'
+          }}>
+            Beyond Traditional Metrics
+          </h2>
+          <p style={{ 
+            fontSize: '1.2rem',
+            color: '#444950',
+            marginBottom: '4rem',
+            maxWidth: '700px',
+            margin: '0 auto 4rem auto'
+          }}>
+            See how XPS captures the full picture of your professional identity
+          </p>
+          
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            <div style={{ 
+              background: '#f8f9fa',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '2px solid #e9ecef',
+              position: 'relative'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#666'
+              }}>
+                📄 Traditional Resume
+              </h3>
+              <ul style={{ 
+                textAlign: 'left',
+                color: '#666',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Shows job titles</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Lists companies</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Education history</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ No real impact measure</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ Static snapshot</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ Limited context</li>
+              </ul>
+            </div>
+            
+            <div style={{ 
+              background: '#f8f9fa',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '2px solid #e9ecef',
+              position: 'relative'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#666'
+              }}>
+                🔗 Professional Network
+              </h3>
+              <ul style={{ 
+                textAlign: 'left',
+                color: '#666',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Shows connections</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Mutual connections</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Industry reach</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ No quality assessment</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ Quantity over quality</li>
+                <li style={{ marginBottom: '0.5rem', color: '#999' }}>✗ No contribution tracking</li>
+              </ul>
+            </div>
+            
+            <div style={{ 
+              background: 'linear-gradient(135deg, #23272f 0%, #444950 100%)',
+              color: 'white',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '2px solid #23272f',
+              position: 'relative',
+              transform: 'scale(1.05)',
+              boxShadow: '0 8px 30px rgba(102, 126, 234, 0.3)'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: 'white'
+              }}>
+                ⚡ XYRAS Professional Score
+              </h3>
+              <ul style={{ 
+                textAlign: 'left',
+                color: 'white',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                listStyle: 'none',
+                padding: 0
+              }}>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Measures real impact</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Tracks growth over time</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Verified contributions</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Peer credibility assessment</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Living, breathing profile</li>
+                <li style={{ marginBottom: '0.5rem' }}>✓ Holistic professional identity</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial/Preview Section */}
+      <section className="preview-section" style={{ 
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
+        color: 'white', 
+        padding: '6rem 2rem',
+        textAlign: 'center'
+      }}>
+        <div className="preview-container" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '1rem',
+            color: 'white'
+          }}>
+            Early Beta Insights
+          </h2>
+          <p style={{ 
+            fontSize: '1.2rem',
+            color: 'rgba(255, 255, 255, 0.9)',
+            marginBottom: '4rem',
+            maxWidth: '700px',
+            margin: '0 auto 4rem auto'
+          }}>
+            Get a sneak peek at what beta users are discovering about their professional identity
+          </p>
+          
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
+          }}>
+            <div style={{ 
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              textAlign: 'left'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ 
+                  width: '50px', 
+                  height: '50px', 
+                  borderRadius: '50%', 
+                  background: 'linear-gradient(45deg, #4ecdc4, #44e795)',
+                  marginRight: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem'
+                }}>
+                  👩‍💻
+                </div>
+                <div>
+                  <div style={{ fontWeight: '600', color: 'white' }}>Sarah Chen</div>
+                  <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.7)' }}>Product Manager</div>
+                </div>
+              </div>
+              <p style={{ 
+                color: 'rgba(255, 255, 255, 0.9)',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                fontStyle: 'italic',
+                marginBottom: '1rem'
+              }}>
+                "XPS helped me realize my cross-functional leadership had more impact than I thought. 
+                My score jumped 180 points when I added my mentorship contributions."
+              </p>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center',
+                fontSize: '0.9rem',
+                color: 'rgba(255, 255, 255, 0.7)'
+              }}>
+                <span>XPS Score: 892</span>
+                <span>Growth: +24% this quarter</span>
+              </div>
+            </div>
+            
+            <div style={{ 
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              padding: '2rem',
+              borderRadius: '1rem',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              textAlign: 'left'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ 
+                  width: '50px', 
+                  height: '50px', 
+                  borderRadius: '50%', 
+                  background: 'linear-gradient(45deg, #ff6b6b, #ffa726)',
+                  marginRight: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem'
+                }}>
+                  👨‍🔬
+                </div>
+                <div>
+                  <div style={{ fontWeight: '600', color: 'white' }}>Marcus Johnson</div>
+                  <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.7)' }}>Software Engineer</div>
+                </div>
+              </div>
+              <p style={{ 
+                color: 'rgba(255, 255, 255, 0.9)',
+                fontSize: '1rem',
+                lineHeight: '1.6',
+                fontStyle: 'italic',
+                marginBottom: '1rem'
+              }}>
+                "Finally, a way to showcase the innovative solutions I've built beyond just listing technologies. 
+                XPS captures the 'why' behind my work, not just the 'what'."
+              </p>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center',
+                fontSize: '0.9rem',
+                color: 'rgba(255, 255, 255, 0.7)'
+              }}>
+                <span>XPS Score: 756</span>
+                <span>Impact Rating: A+</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style={{ 
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            padding: '2rem',
+            borderRadius: '1rem',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            marginBottom: '3rem'
+          }}>
+            <h3 style={{ 
+              fontSize: '1.5rem',
+              fontWeight: '700',
+              marginBottom: '1rem',
+              color: 'white'
+            }}>
+              🎯 What Beta Users Are Discovering
+            </h3>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '1.5rem',
+              textAlign: 'left'
+            }}>
+              <div>
+                <div style={{ fontSize: '2rem', fontWeight: '800', color: '#4ecdc4', marginBottom: '0.5rem' }}>73%</div>
+                <div style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem' }}>Discovered hidden strengths they never knew they had</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '2rem', fontWeight: '800', color: '#ffa726', marginBottom: '0.5rem' }}>89%</div>
+                <div style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem' }}>Feel more confident discussing their professional value</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '2rem', fontWeight: '800', color: '#ff6b6b', marginBottom: '0.5rem' }}>+340</div>
+                <div style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1rem' }}>Average XPS point increase in first month</div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <Link href="/signup">
+              <button style={{ 
+                background: 'white',
+                color: '#667eea',
+                border: 'none',
+                padding: '1rem 2.5rem',
+                borderRadius: '0.5rem',
+                fontWeight: 600,
+                fontSize: '1.2rem',
+                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}>
+                Join the Beta Today
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section" style={{ 
+        background: '#f8f9fa', 
+        color: '#111', 
+        padding: '6rem 2rem',
+        textAlign: 'center'
+      }}>
+        <div className="faq-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ 
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '1rem',
+            color: '#23272f'
+          }}>
+            Frequently Asked Questions
+          </h2>
+          <p style={{ 
+            fontSize: '1.2rem',
+            color: '#444950',
+            marginBottom: '4rem'
+          }}>
+            Everything you need to know about the XYRAS Professional Score
+          </p>
+          
+          <div style={{ textAlign: 'left' }}>
+            <div style={{ 
+              background: 'white',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              marginBottom: '1.5rem',
+              border: '1px solid #e9ecef'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                🤔 How is XPS different from LinkedIn or traditional resumes?
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6'
+              }}>
+                While LinkedIn shows your network and resumes list your jobs, XPS measures your actual impact and growth. 
+                It tracks verified contributions, peer endorsements, and quantifiable achievements that demonstrate real professional value.
+              </p>
+            </div>
+            
+            <div style={{ 
+              background: 'white',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              marginBottom: '1.5rem',
+              border: '1px solid #e9ecef'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                📊 How is my XPS score calculated?
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6'
+              }}>
+                Your XPS is calculated using multiple factors: project impact, skill development, peer verification, 
+                contribution quality, and growth trajectory. Our algorithm weighs real outcomes over titles or tenure.
+              </p>
+            </div>
+            
+            <div style={{ 
+              background: 'white',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              marginBottom: '1.5rem',
+              border: '1px solid #e9ecef'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                🔒 Is my professional data secure?
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6'
+              }}>
+                Absolutely. We use enterprise-grade security and only you control what information is shared. 
+                Your XPS score is calculated from verified, aggregated data without exposing sensitive details.
+              </p>
+            </div>
+            
+            <div style={{ 
+              background: 'white',
+              padding: '2rem',
+              borderRadius: '1rem',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              marginBottom: '1.5rem',
+              border: '1px solid #e9ecef'
+            }}>
+              <h3 style={{ 
+                fontSize: '1.3rem',
+                fontWeight: '700',
+                marginBottom: '1rem',
+                color: '#23272f'
+              }}>
+                ⏰ When will the beta be available?
+              </h3>
+              <p style={{ 
+                color: '#444950',
+                fontSize: '1rem',
+                lineHeight: '1.6'
+              }}>
+                We're launching the beta in phases starting early 2024. Join our waitlist to get priority access 
+                and be among the first to build your XPS profile.
+              </p>
             </div>
           </div>
         </div>
