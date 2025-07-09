@@ -253,7 +253,7 @@ export default function SignupPage() {
               fontSize: '2.2rem',
               marginBottom: '1rem',
               fontWeight: '800'
-            }}>Join the Beta</h1>
+            }}>Join BETA</h1>
             <p className="hero-subtitle mb-6" style={{ 
               color: '#444950',
               fontSize: '1.2rem',
